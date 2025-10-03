@@ -1,0 +1,245 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+code {
+  font-size: 1.2em;
+}
+ul {
+  padding-inline-start: 20px;
+}
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+} 
+.status {
+  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.game {
+  display: flex;
+  flex-direction: row; 
+  padding-top: 30vh;
+}
+.game-info {
+  margin-left: 100px;
+  color: black; 
+}  
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  background: #0b131b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.starcraft-container {
+  background: linear-gradient(145deg, #3a3a3a, #252525);
+  border: 3px solid #0b131b;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 
+    0 0 20px rgba(120, 140, 160, 0.3),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+.starcraft-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    #9a9a9a, 
+    transparent);
+  animation: scanline 3s linear infinite;
+}
+@keyframes scanline {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.game-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.title {
+  color: #b0c0d0;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 
+    0 0 10px #909090,
+    0 0 20px rgba(144, 144, 144, 0.5);
+  margin-bottom: 15px;
+}
+.status-bar {
+  background: linear-gradient(180deg, #4a4a4a, #2a2a2a);
+  border: 2px solid #7a8a9a;
+  border-radius: 5px;
+  padding: 12px;
+  color: #00ff88;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px #00ff88;
+  box-shadow: 
+    inset 0 2px 5px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(120, 140, 160, 0.2);
+}
+.board {
+  display: inline-block;
+  background: linear-gradient(145deg, #252525, #3a3a3a);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(120, 140, 160, 0.2);
+}
+.board-row {
+  display: flex;
+  clear: both;
+}
+.square {
+  background: linear-gradient(145deg, #040d15, #040d15);
+  border: 2px solid #6a7a8a;
+  width: 90px;
+  height: 90px;
+  margin: 4px;
+  font-size: 48px;
+  font-weight: bold;
+  color: #6dd7e6;
+  cursor: pointer;
+  text-align: center;
+  line-height: 90px;
+  border-radius: 5px;
+  transition: all 0.2s;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  text-shadow: 0 0 10px currentColor;
+}
+.square:hover:not(:disabled) {
+  background: linear-gradient(145deg, #5a5a5a, #3a3a3a);
+  border-color: #8a9aaa;
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(120, 140, 160, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.square:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.reset-button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(145deg, #040d15, #040d15);
+  border: 2px solid #34495E;
+  border-radius: 5px;
+  color: #00ff88;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-shadow: 0 0 10px #00ff88;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    0 0 15px rgba(0, 255, 136, 0.2);
+  transition: all 0.2s;
+}
+.reset-button:hover {
+  background: linear-gradient(145deg, #4a7f3f, #3a6f2f);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(0, 255, 136, 0.4);
+  transform: translateY(-2px);
+}
+.reset-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.square-button{
+  background: linear-gradient(145deg, #040d15, #040d15);
+  border: 2px solid #6a7a8a;
+  margin: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6dd7e6;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgb(225, 211, 211);
+  text-shadow: 0 0 10px currentColor;
+  padding: 0.5rem;
+  width: 10rem;
+}
+li{
+  color: white;
+}
+
+/* smart phone */
+@media only screen and (max-width: 768px){
+  .game-board{
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 4rem;
+    padding-top: 2rem;
+  }
+  .game{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .button-holder{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -1rem;
+  } 
+  body{
+    display: block; 
+  }
+}
